@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0A0A0A;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    user-select: none;
+  }
+}
+
+/* Animaciones ligeras solo con transform y opacity (GPU-composited) */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes subtle-pulse-opacity {
+  0%, 100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 3.5s infinite ease-in-out;
+  will-change: transform;
+}
+
+.animate-cta-pulse {
+  animation: subtle-pulse-opacity 2.2s infinite ease-in-out;
+  will-change: opacity;
+}
+
+/* Paneles livianos sin backdrop-filter ni box-shadows masivos sobre el video */
+.glass-panel {
+  background-color: rgba(12, 12, 12, 0.88);
+  border: 1px solid rgba(255, 107, 0, 0.42);
+}
+
+.glass-panel-bright {
+  background-color: rgba(16, 13, 10, 0.94);
+  border: 1px solid rgba(255, 107, 0, 0.72);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
+}
+
+/* Fondo estático ligero con grilla sutil UNIFRANZ */
+.crt-grid-overlay {
+  background-color: #0A0A0A;
+  background-image:
+    radial-gradient(circle at 50% 35%, rgba(255, 107, 0, 0.12) 0%, transparent 60%),
+    linear-gradient(rgba(255, 107, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 107, 0, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
